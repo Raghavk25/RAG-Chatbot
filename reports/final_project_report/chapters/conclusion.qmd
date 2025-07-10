@@ -1,0 +1,7 @@
+# Conclusion
+
+We have successfully developed a chatbot that combines the strength of information retrieval and augmentation with response generation. The model works well by perfectly integrating these aspects. We explored certain key data preprocessing in the form of manipulating th HTML boilerplates of URLs we were extracting, removing unwanted characters, retaining only the main content, chunking, vector embeddings, semantic search and retrieval, and finally generation using Large Language Models (LLMs). We evaluated the model performance in the end.
+
+This project shows the ever-growing potential of Retrieval Augmented Generation (RAG) and similar technologies that can be useful in leveraging the utility of Large Language Models with a factual corroboration through the used URLs, thereby reducing hallucinations and the risk of spread of false information that might be dangerous.
+
+Like Retrieval Augmented Generation, we have another upcoming technology called Retrieval Interleaved Generation (RIG) that might revolutionize the space of Large Language Models even further, thus strengthening the scope of Artificial Intelligence in the years to come.

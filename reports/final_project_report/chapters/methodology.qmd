@@ -1,0 +1,76 @@
+# Methodology
+
+## Platform and Machine Configurations used
+
+- **Milvus Vector Database**: To store vector embeddings of chunks.
+- **MongoDB Atlas**: To store documents as well as chunks.
+- **Docker Compose**: To support Milvus connection setup.
+- **Serper API**: To extract data from the web.
+
+## Frameworks used
+
+- **Langchain**: Aids in building a Large Language Model.
+- **Gradio**: To build the user interface.
+- **Sentence Transformers**: Used for embedding strings.
+
+## Python Libraries used
+
+- os 
+- sys
+- datetime
+- uuid
+- asyncio
+- typing
+- pymilvus
+- pymongo
+- tqdm
+- dotenv
+- langchain
+- langchain_google_genai
+- requests
+- traceback
+- sentence_transformers
+- re 
+- bs4
+- gradio
+
+## Functionalities used
+- API requests
+- Web scraping
+- HTML boilerplate cleaning
+- Text cleaning
+- Database storage and handling
+- Chunking
+- Vector embedding
+- Semantic search and retrieval 
+- Large Language Models
+- Prompt Engineering
+- Conversation Buffer Memory
+- User Interface
+
+## Retrieval-Augmented Generation
+
+The heart of our project lies in the Retrieval-Augmented Generation (RAG) framework, a sophisticated algorithm that enables the deconstruction of the language model into discrete, interchangeable components. This framework integrates a retriever model that sources relevant context and a generator model that synthesizes the retrieved infor-mation into coherent responses. @article
+
+It carries out:
+
+- **Retrieval**: Extraction of relevant information.
+
+- **Augmentation**: Addition of the information to use it as context for the language model.
+
+- **Generation**: Actual generation of response.
+
+## Workflow
+
+![Workflow](../figures/Workflow.png)
+
+1. The user input query hits the Serper web and news API endpoints. It extracts all the associated links.
+2. The links are scraped to get text content only. The scraped content is stored in MongoDB Atlas database in a specific schema.
+3. The extracted text is then broken down into chunks. These chunks are also stored in MongoDB Atlas database in a specific schema.
+4. The embeddings are computed corresponding to these chunks and stored in Milvus vector database.
+5. The stored chunks are indexed accordingly to mark that they have been processed once.
+6. The user query is then converted into an embedding. 
+7. The embedding corresponding to the user query is then compared against all embeddings in Milvus vector database.
+8. The top k (here, k = 5) embeddings are then elicited and chunks corresponding to these embeddings are obtained.
+9. These chunks are then reordered in the context of the user query from most to least relevant via an LLM call.
+10. The reordered chunks are then passed to the LLM as context along with the user query to get the final answer.

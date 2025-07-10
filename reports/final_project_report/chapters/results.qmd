@@ -1,0 +1,25 @@
+# Results
+
+## User Interface
+
+![User Interface](../figures/User%20Interface.png)
+
+### Components of User Interface
+
+- **Chat window**: This is the workspace where the chatbot's responses to the user's questions will be displayed.
+- **Typing area**: This is the field where the user types the message.
+- **Send button**: This is used to send the message to the chatbot after typing it.
+- **Clear chat button**: This is used to clear chat with the chatbot.
+
+## Example conversation
+
+- User: "Where is India loacted?"
+- Assistant: "India is located in South Asia."
+- User: "What is its capital?"
+- Assistant: "The capital of India is New Delhi."
+- User: "What is its largest city?"
+- Assistant: "Mumbai is the largest city in India."
+
+## Sample usage
+
+![Sample usage](../figures/Sample%20usage.png)

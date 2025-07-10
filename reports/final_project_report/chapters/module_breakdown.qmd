@@ -1,0 +1,87 @@
+# Detailed Module Breakdown
+
+In our project, we have the following modules:
+- src module
+- utils module
+- app module
+- other miscellaneous files
+
+We shall look at each one of them in detail.
+
+
+## src Module
+
+The src module helps keep the root project directly clean and free of useless code.
+It contains the following files:
+
+- **__init__.py**: Special Python script file that is used to mark a directory as a package so that it can be imported and used in other modules.
+
+- **etl.py**: File to perform extract, transform, and load operations. In our project, we used it to keep all extraction and indexing codes inside it. It contains the following function(s): 
+    * **extract_all_html(list_of_urls, doc_type)**: Function to extract cleaned text from a list of URLs.
+    * **get_all_embeddings(list_of_text: List[str], batch_size: int = 128, model_name=EMBEDDING_MODEL) -> List[List[float]]**: Function to asynchronously create embeddings of a list of texts.
+    * **index_documents()**: Function to asynchronously index all unindexed documents in the database.
+    
+- **retrieval_engine.py**: File used to retrieve most similar chunks from the database. It contains the following function(s):
+    * **search_chunks(query, top_k, article_type = "web")**: Function to retrieve top k semantically similar chunks in terms of their embeddings.
+
+
+## utils Module
+
+The utils module contains helper functions and classes that can be used across various folders and files in the project to facilitate code reusability.
+It contains the following files:
+
+- **__init__.py**: Special Python script file that is used to mark a directory as a package so that it can be imported and used in other modules.
+
+- **search_utils.py**: File for search-related functionalities that is used to hit the Serper API using a query and get the associated links. It contains the following function(s):
+    * **search_web(query:str, nb_docs = 10)**: Function to perform a web search using Serper API.
+    * **search_news(query:str, nb_docs = 10)**: Function to perform a news search using Serper API.
+
+- **text_utils.py**: File for all text-related functionalities. It contains the following function(s):
+    * **chunk_text(document: str, document_id: str) -> List[Dict]**: Function to convert a document into chunks.
+    * **clean_text(text)**: Function to remove control characters and excessive whitespace from the given text.
+    * **get_html_text(url)**: Function to extract cleaned text and raw HTML from a given link.
+    * **get_embedding(chunks: list[str], model_name = "all-MiniLM-L6-v2")**: Function to generate an embedding vector for a given text block.
+
+- **db_utils.py**: File for all database-related functionalities. It contains the following function(s):
+    * **insert_in_db_document(document)**: Function to insert each document into the MongoDB Collection (documents_main).
+    * **insert_all_documents(list_of_documents)**: Function to dump all documents in MongoDB Atlas collection (documents_main).
+    * **insert_in_db_chunks(chunk)**: Function to insert a single chunk into the database (documents_chunks).
+    * **insert_all_chunks(list_of_chunks)**: Function to dump all chunks in MongoDB Atlas collection (documents_chunks).
+    * **clear_all_chunks(collection)**: Function to clear all the chunks from the MongoDB Atlas database (to be used only when necessary).
+    * **clear_all_docs(collection)**: Function to clear all the documents from the MongoDB Atlas database (to be used only when necessary).
+    * **create_milvus_collection()**: Function to create Milvus vector database collection.
+    * **delete_milvus_collection(collection_name: str)**: Function to delete Milvus vector database collection.
+
+- **LLM_utils.py**: File for all LLM (Large Language Models)-related functionalities. It contains the following function(s):
+    * **rank_chunks(query, chunks)**: Function to rank chunks from most relevant to least relevant.
+    * **llm_call(query, support_material)**: Function to invoke an LLM call.
+    * **llm_response(query)**: Function to make the final call to the LLM to elicit a response.
+
+- **user_interface.py**: File for developing the user interface. It contains the following function(s):
+    * **respond(message, chat_history)**: Function to append user message and a placeholder bot response ("Typing...") to the chat history and then replace it with the final response.
+    * **launch_chatbot()**: Function to launch the final chatbot interface.
+
+
+## app Module
+
+The app module is the main module that calls the final functions. It is the entry point of the project where the execution starts. It contains the following function(s):
+
+- **ingestion(query, nb_docs = 10)**: Inserts chunks, documents, and embeddings into respective databases followed by indexing them appropriately. It is primarily used for the purpose of training.
+
+:::{.callout-note}
+It makes a call to the final launch_chatbot() function.
+:::
+
+
+## Other miscellaneous files
+
+There are some other miscellaneous files used for carrying out some other minor functionalities.
+These include:
+
+- **.gitignore**: File that tells Git which files or folders to ignore in the project i.e. which files are not to be tracked or committed to the repository. We used it to store the .env file that kept all API keys and other sensitive information.
+
+- **.env**: File that contains all the environment variables such as API endpoints, API keys, etc. It has been made to be ignored while committing by the .gitignore file.
+
+- **docker-compose.yml**: File to set up docker specifications so as to set up Milvus vector database.
+
+- **README.md**: File that keeps the whole structure of the repository for better navigability through the project.

@@ -1,0 +1,30 @@
+# Introduction to Project
+
+Chatbots are increasingly finding their way into e-commerce and e-services, as their implementation opens up promising opportunities to improve customer service. A chatbot is a software application that can imitate human conversation, allowing users to interact with it over text or speech. RAG is an add-on to a chatbot that helps it retrieve information, add it to the user's input, and generate a response. 
+
+## Overview
+
+RAG stands for "Retrieval-Augmented Generation" - a technology that combines information retrieval with generation. A RAG chatbot essentially process the user's query, retrieves related information from some knowledge base, adds it to the query, and generates an appropriate response. It is basically an extension of a traditional chatbot that allows it to back its generted responses in order to build credibility and add gravitas to the response.
+
+## Existing System
+
+Opposed to RAG chatbots are:-
+
+- **Rule-based chatbots**: These operate by adhering to a predefined set of rules that dictate how to respond accordingly. For this, RASA framework was prominently used to sustain a rules engine that would take care of generating responses as per the rules. These are very limited in their functionality because of being confined to a set of rules and not being able to expand beyond them.
+
+- **Generative chatbots without RAG**: These rely on the data they were trained on to generate responses without any retrieval. For this, no RAG framework is required. It retains the functionality of generation but without retrieval and augmentation. They may be subject to hallucinations, a situation in which a chatbot gives information that is false and is not grounded in reaity.
+
+RAG is a recent technology and has been gaining traction. 
+
+## Objectives of Project 
+
+The objective of the project is to build a RAG chatbot that is trained on some data fetched dynamically from the web that is stored in the database to serve as the knowledge base for the chatbot. It ought to serve the following purposes:-
+
+- Enhanced user support
+- Improved efficiency
+- Reduced costs
+- Automation of customer support
+
+::: {.callout-note}
+Studies show that self- disclosure and empathy aptitudes should be given, in order to enhance the pleasure of the dialogue by building a closer relationship between the two interlocutors, which in turn stands for a successful interaction and thus for a satisfactory service performance. In summary, the user’s willingness to interact depends to a large extent on the “attitude” of the chatbot and on the “feelings” the latter transmits. Additionally, in order to interact in a more authentic way in the eyes of the user, chatbots should possess attributes such as a trustworthy personality, active listening, prompt responding and a socially oriented interaction style, e.g. through the use of emojis or modern idioms in their messages. @MISISCHIA2022421
+:::

@@ -1,0 +1,202 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "RAG Chatbot",
+    "section": "",
+    "text": "Preface\nThis report has been prepared as a part of our full-time Data Science internship at Sabudh Foundation. The rationale behind this report is to document the development of a RAG chatbot.\nIn the age of cutting-edge technologies, chatbots aid in information retrieval without any need for human intervention. The idea for this project stemmed from our curiosity in learning how machines can comprehend human languages, extract related information from some knowledge base, and process it all to generate appropriate responses. Over the course of this internship, our team delved deeper into the intricate world of chatbots and RAG to come up with our own model that dazzles bright.\nWe would like to extend a warm notion of thanks to our project mentor, Mr. Partha Sarathi Mukherjee, for walking us through this journey with utmost sincerity and dedication. His resilience and determination towards his field truly inspires us all. We are also grateful to our course instructors for teaching us with such conviction and patience as well as our fellow batchmates for always keeping spirits in the high.\nThis project has really been a great learning experience and has prompted us to think beneath the surface to see how beautifully connected the technical aspects of a system are.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "RAG Chatbot",
+    "section": "Overview",
+    "text": "Overview\nRAG stands for “Retrieval-Augmented Generation” - a technology that combines information retrieval with generation. A RAG chatbot essentially process the user’s query, retrieves related information from some knowledge base, adds it to the query, and generates an appropriate response. It is basically an extension of a traditional chatbot that allows it to back its generted responses in order to build credibility and add gravitas to the response.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#existing-system",
+    "href": "index.html#existing-system",
+    "title": "RAG Chatbot",
+    "section": "Existing System",
+    "text": "Existing System\nOpposed to RAG chatbots are:-\n\nRule-based chatbots: These operate by adhering to a predefined set of rules that dictate how to respond accordingly. For this, RASA framework was prominently used to sustain a rules engine that would take care of generating responses as per the rules. These are very limited in their functionality because of being confined to a set of rules and not being able to expand beyond them.\nGenerative chatbots without RAG: These rely on the data they were trained on to generate responses without any retrieval. For this, no RAG framework is required. It retains the functionality of generation but without retrieval and augmentation. They may be subject to hallucinations, a situation in which a chatbot gives information that is false and is not grounded in reaity.\n\nRAG is a recent technology and has been gaining traction.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#objectives-of-project",
+    "href": "index.html#objectives-of-project",
+    "title": "RAG Chatbot",
+    "section": "Objectives of Project",
+    "text": "Objectives of Project\nThe objective of the project is to build a RAG chatbot that is trained on some data fetched dynamically from the web that is stored in the database to serve as the knowledge base for the chatbot. It ought to serve the following purposes:-\n\nEnhanced user support\nImproved efficiency\nReduced costs\nAutomation of customer support\n\n\n\n\n\n\n\nNote\n\n\n\nStudies show that self- disclosure and empathy aptitudes should be given, in order to enhance the pleasure of the dialogue by building a closer relationship between the two interlocutors, which in turn stands for a successful interaction and thus for a satisfactory service performance. In summary, the user’s willingness to interact depends to a large extent on the “attitude” of the chatbot and on the “feelings” the latter transmits. Additionally, in order to interact in a more authentic way in the eyes of the user, chatbots should possess attributes such as a trustworthy personality, active listening, prompt responding and a socially oriented interaction style, e.g. through the use of emojis or modern idioms in their messages. Misischia, Poecze, and Strauss (2022)",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#dataset-collection",
+    "href": "index.html#dataset-collection",
+    "title": "RAG Chatbot",
+    "section": "Dataset Collection",
+    "text": "Dataset Collection\nThis involves actually fetching the data to be used. This is the data we are going to work with subsequently. Here, we are getting our data as follows:-\n\nHitting the Serper API with the user query to get related URLs.\nScraping those URLs to get the text and store it.\n\nThis scraped text is essentially the data for our model.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#data-pre-processing",
+    "href": "index.html#data-pre-processing",
+    "title": "RAG Chatbot",
+    "section": "Data Pre-processing",
+    "text": "Data Pre-processing\nSome issues to consider:\n\nSince we were getting data in the form of texts scraped from links, some of the texts contained characters in unreadable format as well as other invalid and/or irrelavant characters.\nNoisy data was making its way into the data store.\nLarger documents dominated. There was a need to have a uniform size of texts.\nSometimes vaguely related data made its way into the dataset.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#exploratory-data-analysis-and-visualizations",
+    "href": "index.html#exploratory-data-analysis-and-visualizations",
+    "title": "RAG Chatbot",
+    "section": "Exploratory Data Analysis and Visualizations",
+    "text": "Exploratory Data Analysis and Visualizations\nSome of the steps are:\n\nData Analysis: Data analysis refers to deriving insights from data to understand the structure, patterns, semantics, etc. of data. This step can help identify outliers and anomalies in the data. Using this, we found out invalid text in the data. In the context of our model, after scraping articles from links, we checked that some of those article contained text in unreadable format. Therefore, to get at the root cause of it, we had to analyze the scraped data and the source of such data.\nData Filtering and Manipulation: Data filtering and manipulation refers to filtering data with noise and then modifying it to get it in the desired form. Using this, we removed noise from our data and retained only the relevant information. We modified our scraping functionality to successively filter out unwanted data so that we only retain useful data.\nFeature Selection: Feature selection is the process of selecting the most important variables that will be used in the machine learning model. This step can help you identify which variables are most predictive and which variables can be ignored. We had to choose which tags or elements were most appropriate when extracting information from the web. Using this, we could lay out a scheme as to which features to select and how.\nStatistical Analysis: Statistical analysis involves applying statistical methods to the data to identify patterns, trends, and relationships. This step can help you identify correlations between variables and understand the distribution of the data. It includes ascertaining the statistical significance of features.\nData Visualization: Data visualization is the process of representing data in some visual or graphical form so as to better understand it and gain insights from it easily. It also allows for a better communication of concerns to the associated stakeholders, emphasizing the importance of the steps taken during the entire process.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#platform-and-machine-configurations-used",
+    "href": "index.html#platform-and-machine-configurations-used",
+    "title": "RAG Chatbot",
+    "section": "Platform and Machine Configurations used",
+    "text": "Platform and Machine Configurations used\n\nMilvus Vector Database: To store vector embeddings of chunks.\nMongoDB Atlas: To store documents as well as chunks.\nDocker Compose: To support Milvus connection setup.\nSerper API: To extract data from the web.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#frameworks-used",
+    "href": "index.html#frameworks-used",
+    "title": "RAG Chatbot",
+    "section": "Frameworks used",
+    "text": "Frameworks used\n\nLangchain: Aids in building a Large Language Model.\nGradio: To build the user interface.\nSentence Transformers: Used for embedding strings.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#python-libraries-used",
+    "href": "index.html#python-libraries-used",
+    "title": "RAG Chatbot",
+    "section": "Python Libraries used",
+    "text": "Python Libraries used\n\nos\nsys\ndatetime\nuuid\nasyncio\ntyping\npymilvus\npymongo\ntqdm\ndotenv\nlangchain\nlangchain_google_genai\nrequests\ntraceback\nsentence_transformers\nre\nbs4\ngradio",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#functionalities-used",
+    "href": "index.html#functionalities-used",
+    "title": "RAG Chatbot",
+    "section": "Functionalities used",
+    "text": "Functionalities used\n\nAPI requests\nWeb scraping\nHTML boilerplate cleaning\nText cleaning\nDatabase storage and handling\nChunking\nVector embedding\nSemantic search and retrieval\nLarge Language Models\nPrompt Engineering\nConversation Buffer Memory\nUser Interface",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#retrieval-augmented-generation",
+    "href": "index.html#retrieval-augmented-generation",
+    "title": "RAG Chatbot",
+    "section": "Retrieval-Augmented Generation",
+    "text": "Retrieval-Augmented Generation\nThe heart of our project lies in the Retrieval-Augmented Generation (RAG) framework, a sophisticated algorithm that enables the deconstruction of the language model into discrete, interchangeable components. This framework integrates a retriever model that sources relevant context and a generator model that synthesizes the retrieved infor-mation into coherent responses. Pichai (2023)\nIt carries out:\n\nRetrieval: Extraction of relevant information.\nAugmentation: Addition of the information to use it as context for the language model.\nGeneration: Actual generation of response.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#workflow",
+    "href": "index.html#workflow",
+    "title": "RAG Chatbot",
+    "section": "Workflow",
+    "text": "Workflow\n\n\n\nWorkflow\n\n\n\nThe user input query hits the Serper web and news API endpoints. It extracts all the associated links.\nThe links are scraped to get text content only. The scraped content is stored in MongoDB Atlas database in a specific schema.\nThe extracted text is then broken down into chunks. These chunks are also stored in MongoDB Atlas database in a specific schema.\nThe embeddings are computed corresponding to these chunks and stored in Milvus vector database.\nThe stored chunks are indexed accordingly to mark that they have been processed once.\nThe user query is then converted into an embedding.\nThe embedding corresponding to the user query is then compared against all embeddings in Milvus vector database.\nThe top k (here, k = 5) embeddings are then elicited and chunks corresponding to these embeddings are obtained.\nThese chunks are then reordered in the context of the user query from most to least relevant via an LLM call.\nThe reordered chunks are then passed to the LLM as context along with the user query to get the final answer.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#src-module",
+    "href": "index.html#src-module",
+    "title": "RAG Chatbot",
+    "section": "src Module",
+    "text": "src Module\nThe src module helps keep the root project directly clean and free of useless code. It contains the following files:\n\ninit.py: Special Python script file that is used to mark a directory as a package so that it can be imported and used in other modules.\netl.py: File to perform extract, transform, and load operations. In our project, we used it to keep all extraction and indexing codes inside it. It contains the following function(s):\n\nextract_all_html(list_of_urls, doc_type): Function to extract cleaned text from a list of URLs.\nget_all_embeddings(list_of_text: List[str], batch_size: int = 128, model_name=EMBEDDING_MODEL) -&gt; List[List[float]]: Function to asynchronously create embeddings of a list of texts.\nindex_documents(): Function to asynchronously index all unindexed documents in the database.\n\nretrieval_engine.py: File used to retrieve most similar chunks from the database. It contains the following function(s):\n\nsearch_chunks(query, top_k, article_type = “web”): Function to retrieve top k semantically similar chunks in terms of their embeddings.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#utils-module",
+    "href": "index.html#utils-module",
+    "title": "RAG Chatbot",
+    "section": "utils Module",
+    "text": "utils Module\nThe utils module contains helper functions and classes that can be used across various folders and files in the project to facilitate code reusability. It contains the following files:\n\ninit.py: Special Python script file that is used to mark a directory as a package so that it can be imported and used in other modules.\nsearch_utils.py: File for search-related functionalities that is used to hit the Serper API using a query and get the associated links. It contains the following function(s):\n\nsearch_web(query:str, nb_docs = 10): Function to perform a web search using Serper API.\nsearch_news(query:str, nb_docs = 10): Function to perform a news search using Serper API.\n\ntext_utils.py: File for all text-related functionalities. It contains the following function(s):\n\nchunk_text(document: str, document_id: str) -&gt; List[Dict]: Function to convert a document into chunks.\nclean_text(text): Function to remove control characters and excessive whitespace from the given text.\nget_html_text(url): Function to extract cleaned text and raw HTML from a given link.\nget_embedding(chunks: list[str], model_name = “all-MiniLM-L6-v2”): Function to generate an embedding vector for a given text block.\n\ndb_utils.py: File for all database-related functionalities. It contains the following function(s):\n\ninsert_in_db_document(document): Function to insert each document into the MongoDB Collection (documents_main).\ninsert_all_documents(list_of_documents): Function to dump all documents in MongoDB Atlas collection (documents_main).\ninsert_in_db_chunks(chunk): Function to insert a single chunk into the database (documents_chunks).\ninsert_all_chunks(list_of_chunks): Function to dump all chunks in MongoDB Atlas collection (documents_chunks).\nclear_all_chunks(collection): Function to clear all the chunks from the MongoDB Atlas database (to be used only when necessary).\nclear_all_docs(collection): Function to clear all the documents from the MongoDB Atlas database (to be used only when necessary).\ncreate_milvus_collection(): Function to create Milvus vector database collection.\ndelete_milvus_collection(collection_name: str): Function to delete Milvus vector database collection.\n\nLLM_utils.py: File for all LLM (Large Language Models)-related functionalities. It contains the following function(s):\n\nrank_chunks(query, chunks): Function to rank chunks from most relevant to least relevant.\nllm_call(query, support_material): Function to invoke an LLM call.\nllm_response(query): Function to make the final call to the LLM to elicit a response.\n\nuser_interface.py: File for developing the user interface. It contains the following function(s):\n\nrespond(message, chat_history): Function to append user message and a placeholder bot response (“Typing…”) to the chat history and then replace it with the final response.\nlaunch_chatbot(): Function to launch the final chatbot interface.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#app-module",
+    "href": "index.html#app-module",
+    "title": "RAG Chatbot",
+    "section": "app Module",
+    "text": "app Module\nThe app module is the main module that calls the final functions. It is the entry point of the project where the execution starts. It contains the following function(s):\n\ningestion(query, nb_docs = 10): Inserts chunks, documents, and embeddings into respective databases followed by indexing them appropriately. It is primarily used for the purpose of training.\n\n\n\n\n\n\n\nNote\n\n\n\nIt makes a call to the final launch_chatbot() function.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#other-miscellaneous-files",
+    "href": "index.html#other-miscellaneous-files",
+    "title": "RAG Chatbot",
+    "section": "Other miscellaneous files",
+    "text": "Other miscellaneous files\nThere are some other miscellaneous files used for carrying out some other minor functionalities. These include:\n\n.gitignore: File that tells Git which files or folders to ignore in the project i.e. which files are not to be tracked or committed to the repository. We used it to store the .env file that kept all API keys and other sensitive information.\n.env: File that contains all the environment variables such as API endpoints, API keys, etc. It has been made to be ignored while committing by the .gitignore file.\ndocker-compose.yml: File to set up docker specifications so as to set up Milvus vector database.\nREADME.md: File that keeps the whole structure of the repository for better navigability through the project.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#user-interface",
+    "href": "index.html#user-interface",
+    "title": "RAG Chatbot",
+    "section": "User Interface",
+    "text": "User Interface\n\n\n\nUser Interface\n\n\n\nComponents of User Interface\n\nChat window: This is the workspace where the chatbot’s responses to the user’s questions will be displayed.\nTyping area: This is the field where the user types the message.\nSend button: This is used to send the message to the chatbot after typing it.\nClear chat button: This is used to clear chat with the chatbot.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#example-conversation",
+    "href": "index.html#example-conversation",
+    "title": "RAG Chatbot",
+    "section": "Example conversation",
+    "text": "Example conversation\n\nUser: “Where is India loacted?”\nAssistant: “India is located in South Asia.”\nUser: “What is its capital?”\nAssistant: “The capital of India is New Delhi.”\nUser: “What is its largest city?”\nAssistant: “Mumbai is the largest city in India.”",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#sample-usage",
+    "href": "index.html#sample-usage",
+    "title": "RAG Chatbot",
+    "section": "Sample usage",
+    "text": "Sample usage\n\n\n\nSample usage",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>index.html</span>"
+    ]
+  }
+]

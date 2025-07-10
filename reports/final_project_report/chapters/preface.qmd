@@ -1,0 +1,9 @@
+# Preface {.unnumbered}
+
+This report has been prepared as a part of our full-time Data Science internship at Sabudh Foundation. The rationale behind this report is to document the development of a RAG chatbot. 
+
+In the age of cutting-edge technologies, chatbots aid in information retrieval without any need for human intervention. The idea for this project stemmed from our curiosity in learning how machines can comprehend human languages, extract related information from some knowledge base, and process it all to generate appropriate responses. Over the course of this internship, our team delved deeper into the intricate world of chatbots and RAG to come up with our own model that dazzles bright.
+
+We would like to extend a warm notion of thanks to our project mentor, Mr. Partha Sarathi Mukherjee, for walking us through this journey with utmost sincerity and dedication. His resilience and determination towards his field truly inspires us all. We are also grateful to our course instructors for teaching us with such conviction and patience as well as our fellow batchmates for always keeping spirits in the high.
+
+This project has really been a great learning experience and has prompted us to think beneath the surface to see how beautifully connected the technical aspects of a system are.

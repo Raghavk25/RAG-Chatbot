@@ -1,0 +1,13 @@
+# Abstract {.unnumbered}
+
+The main goal of this project is to come up with a Retrieval-Augmented Generation (RAG) Chatbot. A simple chatbot is a software application that simulates human conversation through speech or text and can interact with users in natural languages to facilitate smooth communication. 
+
+Chatbots provide strategic business advantage by saving human time and efforts spent in customer support and communication. Business organizations use them for scaled, personalized, and improved communications for a better overall user experience.
+
+However, a simple chatbot is limited in its ability to produce very technical or domain-grounded answers. In addition, they are also susceptible to hallucinations, a situation where a chatbot gives out responses that are false or not grounded in reality. To overcomes these challenges, we have Retrieval-Augmented Generation as an add-on to simple chatbots to boost their performance.
+
+A Retrieval-Augmented Generation Chatbot performs retrieval (retrieving relevant information from a credible source), augmentation (feeding the retrieved information into the Large Language Model along with the user input message), and generation (generating a response based on the retrieved information).
+
+Carrying out these functionalities, the chatbot learns along the way, storing information in its data stores and referring to them continually, facilitating reusability of information and better retrieval. 
+
+All in all, a RAG chatbot has an upper edge in the contemporary era.

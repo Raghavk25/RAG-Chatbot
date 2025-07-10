@@ -1,0 +1,49 @@
+# Pre-Processing and Exploratory Data Analysis
+
+Once the dataset is got, there is a need to preprocess it in order to make it suitable for machine learning. 
+This includes:
+
+- Cleaning the data 
+- Dropping irrelevant features
+- Handling missing values
+- Encoding categorical variables
+- Scaling numerical features
+
+::: {.callout-note} 
+This step is crucial since the accuracy of a model will depend on the quality of the data. 
+:::
+
+## Dataset Collection
+
+This involves actually fetching the data to be used. This is the data we are going to work with subsequently. Here, we are getting our data as follows:-
+
+1. Hitting the Serper API with the user query to get related URLs.
+2. Scraping those URLs to get the text and store it.
+
+This scraped text is essentially the data for our model.
+
+## Data Pre-processing
+
+Some issues to consider:
+
+- Since we were getting data in the form of texts scraped from links, some of the texts contained characters in unreadable format as well as other invalid and/or irrelavant characters.
+
+- Noisy data was making its way into the data store.
+
+- Larger documents dominated. There was a need to have a uniform size of texts.
+
+- Sometimes vaguely related data made its way into the dataset. 
+
+## Exploratory Data Analysis and Visualizations 
+
+Some of the steps are:
+
+- **Data Analysis**: Data analysis refers to deriving insights from data to understand the structure, patterns, semantics, etc. of data. This step can help identify outliers and anomalies in the data. Using this, we found out invalid text in the data. In the context of our model, after scraping articles from links, we checked that some of those article contained text in unreadable format. Therefore, to get at the root cause of it, we had to analyze the scraped data and the source of such data. 
+
+- **Data Filtering and Manipulation**: Data filtering and manipulation refers to filtering data with noise and then modifying it to get it in the desired form. Using this, we removed noise from our data and retained only the relevant information. We modified our scraping functionality to successively filter out unwanted data so that we only retain useful data.
+
+- **Feature Selection**: Feature selection is the process of selecting the most important variables that will be used in the machine learning model. This step can help you identify which variables are most predictive and which variables can be ignored. We had to choose which tags or elements were most appropriate when extracting information from the web. Using this, we could lay out a scheme as to which features to select and how.
+
+- **Statistical Analysis**: Statistical analysis involves applying statistical methods to the data to identify patterns, trends, and relationships. This step can help you identify correlations between variables and understand the distribution of the data. It includes ascertaining the statistical significance of features.
+
+- **Data Visualization**: Data visualization is the process of representing data in some visual or graphical form so as to better understand it and gain insights from it easily. It also allows for a better communication of concerns to the associated stakeholders, emphasizing the importance of the steps taken during the entire process.

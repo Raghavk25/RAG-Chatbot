@@ -1,0 +1,51 @@
+project:
+  type: book              
+  output-dir: _output       
+
+  render:
+    - index.qmd            
+book:
+  title: "RAG Chatbot"
+  author: "Raghav Khanna"
+  date: June 13, 2025
+  reader-mode: true
+  page-footer:
+    left: |
+      RAG Chatbot
+    right: |
+      This book template was built with <a href="https://quarto.org/">Quarto</a>, Courtesy Dr. Sukhjit Singh Sehra.
+  # cover-image: cover.jpg
+  # favicon: cover.jpg
+  site-url: https://sabudh.org/
+  repo-url: https://github.com/SabudhFoundation/passion-project-rag-chatbot-b14-psm
+  repo-branch: main
+  chapters:
+    - index.qmd
+
+bibliography: references.bib
+
+format:
+  # ── 1. Multi-page HTML book ──────────────────────────────
+  html:
+    theme: united
+    code-line-numbers: true
+    code-link: true
+    self-contained: true
+    toc: true
+    number-sections: true
+
+  # # ── 2. PDF (single file) ─────────────────────────────────
+  pdf:
+    documentclass: scrreport
+    lof: true
+    geometry:
+      - top=30mm
+      - left=20mm
+      - heightrounded
+    fontfamily: libertinus
+    colorlinks: true
+   
+  # ── 3. EPUB (single file) ────────────────────────────────
+  epub:
+    toc: true
+    embed-resources: true
