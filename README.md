@@ -4,7 +4,7 @@
 
 ## Project Organisation
 ------------
-
+```
 ├── reports                       <- Project reports
 |   |        
 │   ├── figures                   <- Generated graphics and figures to be used in reporting
@@ -48,3 +48,4 @@
 ├── docker-compose.yml            <- Docker specifications
 |
 ├── requirements.txt              <- Requirements for reproducing the analysis environment
+```
